@@ -1,0 +1,45 @@
+/******************************************************************************
+
+                            Online C Compiler.
+                Code, Compile, Run and Debug C program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int a = 3;
+    int b = 2;
+    int** array;
+    array = (int**)malloc(sizeof(int*)*a);
+    for(int i = 0; i<a; i++)
+        array[i] = (int*)malloc(sizeof(int)*b); 
+    printf("memory assigned\n");
+    
+    for(int i = 0; i<a; i++) 
+        for(int j = 0; j<b; j++)
+            array[i][j] = rand()%10;
+   
+   
+    for(int i = 0; i<a; i++)
+    {
+        for(int j = 0; j<b; j++)
+        {
+            printf("%d ",array[i][j]);
+        }
+    
+        printf("\n");
+    }
+    
+    for(int i = 0; i<a; i++)
+        free(array[i]);
+    free(array);
+    
+    printf("memory released\n");
+             
+
+    return 0;
+}
